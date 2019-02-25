@@ -1,10 +1,11 @@
-
 class Bookmark
-  BOOKMARKS = [{name: "Bookmark 1"}, {name: "Bookmark 2"}]
+  BOOKMARKS = [{name: "Bookmark1"}, {name: "Bookmark2"}]
+
   def all
-    @bookmarks_list = []
-    BOOKMARKS.each do |k|
-    @bookmarks_list << k[:name]
+    @bookmark_list = []
+    BOOKMARKS.each do |bookmark|
+      @bookmark_list << bookmark[:name]
     end
+    @bookmark_list
   end
 end
