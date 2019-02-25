@@ -1,12 +1,10 @@
 require 'sinatra/base'
+require_relative './lib/bookmark.rb'
 
 class BookmarkWeb < Sinatra::Base
-$bookmarks = [{name: "Bookmark 1"}, {name: "Bookmark 2"}]
+
   get '/bookmarks' do
-    @bookmarks_list = []
-    $bookmarks.each do |k| 
-      @bookmarks_list << k[:name]
-    end
+    @bookmark_list = Bookmark.new.all
     erb :bookmarks
   end
 
