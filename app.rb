@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require_relative './lib/bookmark.rb'
 
 class BookmarkWeb < Sinatra::Base
-
   get '/bookmarks' do
-     @bookmark_list = Bookmark.new.all
-     erb :bookmarks
+    p ENV
+    @bookmark_list = Bookmark.all
+    erb :bookmarks
   end
 
- run! if app_file == $0
+  run! if app_file == $0
 end

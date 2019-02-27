@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 require_relative './setup_test_database'
-ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara'
@@ -17,7 +18,7 @@ RSpec.configure do |config|
   config.before(:each) do
     setup_test_database
   end
-end 
+end
 #
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file

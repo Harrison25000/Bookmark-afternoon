@@ -1,0 +1,62 @@
+Inspecting 7 files
+CCCCCCW
+
+Offenses:
+
+app.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
+# Magic Comment?
+^
+app.rb:5:1: C: Style/Documentation: Missing top-level class documentation comment.
+class BookmarkWeb < Sinatra::Base
+^^^^^
+app.rb:12:23: C: Style/SpecialGlobalVars: Prefer $PROGRAM_NAME over $0.
+  run! if app_file == $0
+                      ^^
+spec/spec_helper.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
+# Magic Comment
+^
+spec/spec_helper.rb:64:1: C: Style/BlockComments: Do not use block comments.
+=begin ...
+^^^^^^
+spec/setup_test_database.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
+# Magic Comment
+^
+spec/unit_tests/bookmark_spec.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
+## Magic Comment
+^
+spec/feature_tests/view_bookmarks_spec.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
+require 'pg'
+^
+spec/feature_tests/view_bookmarks_spec.rb:16:34: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expect(page).to have_content "http://www.destroyallsoftware.com"
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/feature_tests/view_bookmarks_spec.rb:17:34: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expect(page).to have_content "http://www.google.com"
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+lib/bookmark_tester.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
+# require 'pg'
+^
+lib/bookmark.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
+require 'pg'
+^
+lib/bookmark.rb:3:1: C: Style/Documentation: Missing top-level class documentation comment.
+class Bookmark
+^^^^^
+lib/bookmark.rb:4:1: C: Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body beginning.
+lib/bookmark.rb:13:5: C: Style/ConditionalAssignment: Use the return of the conditional for variable assignment and comparison.
+    if ENV['ENVIRONMENT'] == 'test' ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/bookmark.rb:14:37: C: Layout/SpaceAfterColon: Space missing after colon.
+      connection = PG.connect(dbname:'bookmark_tester')
+                                    ^
+lib/bookmark.rb:16:37: C: Layout/SpaceAfterColon: Space missing after colon.
+      connection = PG.connect(dbname:'bookmark_manager')
+                                    ^
+lib/bookmark.rb:18:30: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    result = connection.exec("SELECT * FROM bookmarks")
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/bookmark.rb:19:5: W: Lint/AmbiguousBlockAssociation: Parenthesize the param result.map { |bookmark| bookmark['url'] } to make sure that the block will be associated with the result.map method call.
+    p result.map { |bookmark| bookmark['url'] }
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+7 files inspected, 19 offenses detected
