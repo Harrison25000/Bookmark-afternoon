@@ -1,7 +1,15 @@
-# feature 'List of bookmarks' do
-#   scenario 'We receive a list' do
-#     visit '/bookmarks'
-#     expect(page).to have_content 'Here are your bookmarks:'
-#     expect(page).to have_content 'Bookmark1' and 'Bookmark2'
-#   end
-# end
+require 'pg'
+feature 'Viewing bookmarks' do
+  scenario 'A user can see bookmarks' do
+   connection = PG.connect(dbname: 'bookmark_tester')
+   connection.exec("INSERT INTO bookmarks VALUES(1, 'http://makersacademy.com');")
+   connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.destroyallsoftware.com');")
+   connection.exec("INSERT INTO bookmarks VALUES(3, 'http://www.google.com');")
+
+   visit('/bookmarks')
+
+   expect(page).to have_content "http://www.makersacademy.com"
+   expect(page).to have_content "http://www.destroyallsoftware.com"
+   expect(page).to have_content "http://www.google.com"
+  end
+end
