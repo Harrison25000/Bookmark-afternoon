@@ -1,0 +1,9 @@
+<ul>
+  <% @bookmark_list.each do |bookmark_list| %>
+  <li>
+  <a href="<%= bookmark_list.url %>">
+    <%= bookmark_list.title %>
+  </a>
+  </li>
+  <% end %>
+</ul>
