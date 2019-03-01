@@ -36,11 +36,13 @@ class Bookmark
 
 
   end
-  # def all
-  #   @bookmark_list = []
-  #   BOOKMARKS.each do |bookmark|
-  #     @bookmark_list << bookmark[:name]
-  #   end
-  #   @bookmark_list
-  # end
+
+  def self.delete(id:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'bookmark_tester')
+    else
+      connection = PG.connect(dbname: 'bookmark_manager')
+    end
+    connection.exec("DELETE FROM bookmarks WHERE id = #{id}")
+  end
 end

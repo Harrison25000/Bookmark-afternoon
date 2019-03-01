@@ -4,13 +4,6 @@ require 'pg'
 
 feature 'Viewing bookmarks' do
   scenario 'A user can see bookmarks' do
-    # connection = PG.connect(dbname: 'bookmark_tester')
-    # connection.exec("INSERT INTO bookmarks
-    #   VALUES(1, 'http://www.makersacademy.com', 'makers academy');")
-    # connection.exec("INSERT INTO bookmarks
-    #   VALUES(2, 'http://www.destroyallsoftware.com', 'destroyer');")
-    # connection.exec("INSERT INTO bookmarks
-    #   VALUES(3, 'http://www.google.com', 'google');")
     Bookmark.create(url: 'http://www.makersacademy.com', title: 'makers academy')
     Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'destroyer')
     Bookmark.create(url: 'http://www.google.com', title: 'google')
